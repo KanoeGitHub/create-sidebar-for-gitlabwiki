@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Running the python code for creating the sidebar
+python create_sidebar.py
+
+# Stage modified files
+git add _sidebar.md
+
+exit 0
+
