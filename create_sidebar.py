@@ -11,9 +11,14 @@ CURRENT_DIRECTORY = os.getcwd()
 # Path of view_all_pages
 ALL_PAGES = "<gitlab-repository-url>/-/wikis/pages"
 
+def paths_sorted(paths):
+    paths = sorted(paths, key=lambda x: (int(x.split(".")[0]) if x.split(".")[0].isdigit() else float('-1'), x))    
+    return paths
+  
 def get_all_files_and_directories(path, depth):
     SPACES_tmp = SPACES*depth    
-    file_list = os.listdir(path)    
+    file_list = os.listdir(path) 
+    file_list = paths_sorted(file_list)
     for f in file_list:
         if f in IGNORE_LIST:
             continue
